@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: b9f5ec926b678f24c95b4390b7206dd1
+labels:
+- Visual
+- Stylistic
+- Shaders
+- Shader
+- Materials
+- Graphics
+- Effect
+- Editor
+- Art
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

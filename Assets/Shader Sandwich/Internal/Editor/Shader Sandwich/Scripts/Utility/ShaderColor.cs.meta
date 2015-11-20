@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 9b1e0f277fdbfd848a8440f783252553
+labels:
+- Visual
+- Stylistic
+- Shaders
+- Shader
+- Materials
+- Graphics
+- Editor
+- Art
+timeCreated: 1429435009
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
