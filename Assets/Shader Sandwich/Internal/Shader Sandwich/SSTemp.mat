@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 4806a52ef7f1c284e95fc882b87f5d5e, type: 3}
+          m_Texture: {fileID: 2800000, guid: df74a0cbfe3033e48af5c068e2386265, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -27,13 +27,6 @@ Material:
           name: _BumpMap
         second:
           m_Texture: {fileID: 2800000, guid: fb6566c21f717904f83743a5a76dd0b0, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ParallaxMap
-        second:
-          m_Texture: {fileID: 2800000, guid: ff2a8d5c74325294e980375f88f29efe, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -52,6 +45,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _ParallaxMap
+        second:
+          m_Texture: {fileID: 2800000, guid: ff2a8d5c74325294e980375f88f29efe, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _SSSBurn_Texture
         second:
           m_Texture: {fileID: 2800000, guid: 354f7eb7f261f094399e01c57c0c2a0d, type: 3}
@@ -61,15 +61,11 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: .194714502
+        second: -.283410519
       data:
         first:
           name: _Shininess
         second: .300000012
-      data:
-        first:
-          name: _Parallax
-        second: .132590503
       data:
         first:
           name: _SSSWater_Density
@@ -114,6 +110,10 @@ Material:
         first:
           name: _SSSWind_Scale
         second: 55.7000008
+      data:
+        first:
+          name: _Parallax
+        second: .132590503
       data:
         first:
           name: _SSSSmall_Wave_Texture_Scale
@@ -197,11 +197,11 @@ Material:
       data:
         first:
           name: _SSSGlow
-        second: 4.5625
+        second: 3.375
       data:
         first:
           name: _SSSGlow_Width
-        second: -.526250005
+        second: -.125
       data:
         first:
           name: _SSSMask0_aZ_Offset
@@ -246,7 +246,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .558823526, g: .445755303, b: .32461071, a: 1}
+        second: {r: 1, g: .611764729, b: .0294117909, a: 1}
       data:
         first:
           name: _SpecColor
