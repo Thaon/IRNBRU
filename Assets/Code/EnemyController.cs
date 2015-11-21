@@ -10,7 +10,6 @@ public class EnemyController : MonoBehaviour {
     public float m_minSpeed = 50f;
     public float m_maxSpeed = 80f;
     public List<Vector3> m_points;
-    public LayerMask m_layer;
 
     public bool m_IsFollowing = false;
     private int m_current = 0;
@@ -57,6 +56,7 @@ public class EnemyController : MonoBehaviour {
         {
             m_player = other.GetComponent<Collider>().gameObject;
             enemyState = state.followingPlayer;
+            //Debug.Log("Following!");
         }
     }
 
@@ -82,13 +82,10 @@ public class EnemyController : MonoBehaviour {
         if (m_player != null)
         {
             RaycastHit hit;
-            Ray ray = new Ray(transform.position, (m_player.transform.position - transform.position).normalized);
-            Debug.DrawRay(transform.position, (m_player.transform.position - transform.position).normalized, Color.green);
-            Physics.Raycast(ray, out hit, m_followDistance, m_layer);
-
-            if (hit.collider != null)
+            Vector3 rayDirection = (m_player.transform.position - new Vector3(0, .5f, 0)) - transform.position;
+            if (Physics.Raycast(transform.position, rayDirection, out hit))
             {
-                if (hit.collider.tag == "Player")
+                if (hit.collider.tag == "Player" && hit.distance < m_followDistance)//check if player can be seen and is within distance
                 {
                     FollowPlayer();
                 }
@@ -104,7 +101,9 @@ public class EnemyController : MonoBehaviour {
 
     void FollowPlayer()
     {
-        Vector3 direction = (m_player.transform.position - transform.position).normalized;
-        m_CC.SimpleMove(direction * m_minSpeed * Time.deltaTime);
+        Debug.Log("following");
+        Vector3 direction = m_player.transform.position - transform.position;
+        transform.LookAt(m_player.transform.position);
+        m_CC.SimpleMove(direction.normalized * m_minSpeed);
     }
 }
