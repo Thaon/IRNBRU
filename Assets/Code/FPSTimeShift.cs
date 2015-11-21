@@ -11,7 +11,7 @@ public class FPSTimeShift : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	    if (Input.GetKeyDown(KeyCode.Space))
+	    if (Input.GetKeyDown(KeyCode.Space) ||Input.GetButton("TimeShift"))
         {
             StartCoroutine(GlitchIn());
             foreach (Changeable changeable in m_rootNode.GetComponentsInChildren<Changeable>())
