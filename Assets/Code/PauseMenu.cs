@@ -4,7 +4,7 @@ using System.Collections;
 public class PauseMenu : MonoBehaviour {
 
      public bool paused = false;
-        
+
  
      void Update()
      {
@@ -30,6 +30,7 @@ public class PauseMenu : MonoBehaviour {
 
              GUILayout.EndArea();
 
+             
             
          }
      }  
