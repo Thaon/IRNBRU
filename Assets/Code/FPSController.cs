@@ -8,9 +8,10 @@ public class FPSController : MonoBehaviour {
     float height = 0.0f;
 
     public float speed = 5.0f;
+    public float sprintSpeed=600.0f;
 
     //Input stuff
-    bool left, right, up, down;
+    bool left, right, up, down, sprint;
 
     //Mouselook stuff
     Vector2 _mouseAbsolute;
@@ -46,30 +47,55 @@ public class FPSController : MonoBehaviour {
         right = Input.GetKey(KeyCode.D);
         up = Input.GetKey(KeyCode.W);
         down = Input.GetKey(KeyCode.S);
+        sprint = Input.GetKey(KeyCode.LeftShift);
+
+
 
         Vector3 pos=Vector3.zero;
 
-        if (left)
+        if (sprint)
         {
-            pos -= transform.right * speed * Time.deltaTime;
+            if (left)
+            {
+                pos -= transform.right * sprintSpeed * Time.deltaTime;
+            }
+            if (right)
+            {
+                pos += transform.right * sprintSpeed * Time.deltaTime;
+            }
+            if (up)
+            {
+                pos += transform.forward * sprintSpeed * Time.deltaTime;
+            }
+            if (down)
+            {
+                pos -= transform.forward * sprintSpeed * Time.deltaTime;
+            }
+
+           
         }
-        if(right)
+        else
         {
-            pos += transform.right * speed * Time.deltaTime;
-        }
-        if (up)
-        {
-            pos += transform.forward * speed * Time.deltaTime;
-        }
-        if (down)
-        {
-            pos -= transform.forward * speed * Time.deltaTime;
+            if (left)
+            {
+                pos -= transform.right * speed * Time.deltaTime;
+            }
+            if (right)
+            {
+                pos += transform.right * speed * Time.deltaTime;
+            }
+            if (up)
+            {
+                pos += transform.forward * speed * Time.deltaTime;
+            }
+            if (down)
+            {
+                pos -= transform.forward * speed * Time.deltaTime;
+            }
         }
 
         pos.y = height + GetComponent<CharacterController>().transform.position.y;
-
         
-
         return pos;
     }
 
