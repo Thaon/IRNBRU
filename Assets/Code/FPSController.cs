@@ -4,7 +4,8 @@ using System.Collections;
 public class FPSController : MonoBehaviour {
 
     bool characterController;
-
+    PauseMenu paused;
+    FPSController player;
     float height = 0.0f;
 
     public float speed = 5.0f;
@@ -31,12 +32,29 @@ public class FPSController : MonoBehaviour {
 
         // Set target direction to the camera's initial orientation.
         targetDirection = transform.localRotation.eulerAngles;
+        paused = GetComponent<PauseMenu>();
+        player = GetComponent<FPSController>();
        
 	}
 
 
     void Update()
     {
+       
+
+        if (paused.paused == true)
+        {
+            speed = 0f;
+            sprintSpeed = 0f;
+            player.enabled = false;
+        }
+        else
+        {
+            speed = 300f;
+            sprintSpeed = 600f;
+            player.enabled = true;
+        }
+
         //move first
         GetComponent<CharacterController>().SimpleMove(Movement(speed));
         height = GetComponent<CharacterController>().height;
@@ -163,17 +181,9 @@ public class FPSController : MonoBehaviour {
 
     void MouseLook()
     {
-        // Ensure the cursor is always locked when set
-        if (lockCursor)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
+       
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-        }
 
         #region Mouselook
 
