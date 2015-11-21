@@ -7,12 +7,14 @@ public class FPSTimeShift : MonoBehaviour {
     public GameObject m_rootNode;
     public bool m_glitching;
     float m_tearingAmount = 0;
+    bool m_canTimeShift = true;
 	
 	// Update is called once per frame
 	void Update ()
     {
-	    if (Input.GetKeyDown(KeyCode.Space))
+	    if (Input.GetKeyDown(KeyCode.Space) && m_canTimeShift)
         {
+            m_canTimeShift = false;
             StartCoroutine(GlitchIn());
             foreach (Changeable changeable in m_rootNode.GetComponentsInChildren<Changeable>())
             {
@@ -53,5 +55,6 @@ public class FPSTimeShift : MonoBehaviour {
     {
         m_glitching = false;
         yield return new WaitForSeconds(1f);
+        m_canTimeShift = true;
     }
 }
