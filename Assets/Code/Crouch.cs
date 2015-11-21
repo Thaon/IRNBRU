@@ -24,8 +24,6 @@ public class Crouch : MonoBehaviour {
     void CrouchMovement()
     {
 
-        Vector3 pos = Vector3.zero;
-
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             iTween.ValueTo(gameObject, iTween.Hash("to", m_crouchedHeight, "from", m_standingHeight, "speed", m_speed, "easetype", iTween.EaseType.linear, "onupdate", "UpdateHeight"));

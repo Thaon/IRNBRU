@@ -101,7 +101,7 @@ public class EnemyController : MonoBehaviour {
 
     void FollowPlayer()
     {
-        Debug.Log("following");
+        //Debug.Log("following");
         Vector3 direction = m_player.transform.position - transform.position;
         //transform.LookAt(m_player.transform.position);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(m_player.transform.position - transform.position), 30f * Time.deltaTime);

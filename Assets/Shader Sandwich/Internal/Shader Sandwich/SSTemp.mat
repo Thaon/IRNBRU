@@ -61,7 +61,7 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: -.283410519
+        second: .194714502
       data:
         first:
           name: _Shininess
@@ -197,11 +197,11 @@ Material:
       data:
         first:
           name: _SSSGlow
-        second: 3.375
+        second: 4.5625
       data:
         first:
           name: _SSSGlow_Width
-        second: -.125
+        second: -.526250005
       data:
         first:
           name: _SSSMask0_aZ_Offset

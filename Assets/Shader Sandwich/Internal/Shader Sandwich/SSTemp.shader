@@ -540,7 +540,7 @@ Layer Name #! Mask0 #^ CC0 #?Layer Name
 Layer Type #! 3 #^ CC0 #?Layer Type
 Main Color #! 1,1,1,1 #^ CC0 #?Main Color
 Second Color #! 0,0,0,1 #^ CC0 #?Second Color
-Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d #^ CC0 #^ 1 #?Main Texture
+Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d      #^ CC0 #^ 1 #?Main Texture
 Cubemap #!  #^ CC0 #?Cubemap
 Noise Type #! 0 #^ CC0 #?Noise Type
 Noise Dimensions #! 0 #^ CC0 #?Noise Dimensions
@@ -575,7 +575,7 @@ Layer Name #! Mask0 Copy #^ CC0 #?Layer Name
 Layer Type #! 3 #^ CC0 #?Layer Type
 Main Color #! 1,1,1,1 #^ CC0 #?Main Color
 Second Color #! 0,0,0,1 #^ CC0 #?Second Color
-Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d #^ CC0 #^ 1 #?Main Texture
+Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d      #^ CC0 #^ 1 #?Main Texture
 Cubemap #!  #^ CC0 #?Cubemap
 Noise Type #! 0 #^ CC0 #?Noise Type
 Noise Dimensions #! 0 #^ CC0 #?Noise Dimensions
