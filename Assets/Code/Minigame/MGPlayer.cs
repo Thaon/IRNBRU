@@ -72,6 +72,7 @@ public class MGPlayer : MonoBehaviour {
         if (other.tag == "MGEnemy")
         {
             Debug.Log("you lost!");
+            m_canSwapLane = true;
             m_player.SetActive(true);
             m_minigame.SetActive(false);
         }

@@ -5,6 +5,7 @@ public class FPSMinigameTrigger : MonoBehaviour {
 
     public GameObject m_minigame;
     public GameObject m_player;
+    
 
 	// Use this for initialization
 	void Start ()
