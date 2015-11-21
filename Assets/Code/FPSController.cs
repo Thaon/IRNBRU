@@ -53,15 +53,15 @@ public class FPSController : MonoBehaviour {
         {
             pos -= transform.right * speed * Time.deltaTime;
         }
-        else if(right)
+        if(right)
         {
             pos += transform.right * speed * Time.deltaTime;
         }
-        else if (up)
+        if (up)
         {
             pos += transform.forward * speed * Time.deltaTime;
         }
-        else if (down)
+        if (down)
         {
             pos -= transform.forward * speed * Time.deltaTime;
         }

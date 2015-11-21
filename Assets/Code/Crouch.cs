@@ -4,7 +4,7 @@ using System.Collections;
 public class Crouch : MonoBehaviour {
 
     float m_height=2.0f;
-    float m_newHeight = 1.0f;
+    float m_newHeight = 2.0f;
     float m_speed = 3.0f;
 
 	// Use this for initialization
