@@ -151,4 +151,4 @@ Material:
       data:
         first:
           name: _SSSPull_Axis
-        second: {r: .892733574, g: .941176474, b: .892733574, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: SSSettings
   m_EditorClassIdentifier: 
   RecentFiles:
+  - Assets/Shader Sandwich/Example Files/DX11/Hologram.shader
   - Assets/Shader Sandwich/Example Files/Specific Effects/Burn.shader
   - Assets/Shader Sandwich/Example Files/Enhanced Graphics/POM.shader
-  - 
   - 
   - 
   CurPath: 
