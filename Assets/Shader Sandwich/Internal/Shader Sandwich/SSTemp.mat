@@ -57,6 +57,13 @@ Material:
           m_Texture: {fileID: 2800000, guid: 354f7eb7f261f094399e01c57c0c2a0d, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SSSTexture_aMain_Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: d8b4be5652abe8a438eb34290ae8c163, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -204,8 +211,16 @@ Material:
         second: -.526250005
       data:
         first:
+          name: _SSSSpec_Hardness
+        second: .882160902
+      data:
+        first:
+          name: _SSSTransparency
+        second: 1
+      data:
+        first:
           name: _SSSMask0_aZ_Offset
-        second: 17.1072998
+        second: 26.90625
       data:
         first:
           name: _SSSX_Offset
@@ -242,6 +257,82 @@ Material:
         first:
           name: _SSSNormal_Map_aZ_Offset
         second: 974.591553
+      data:
+        first:
+          name: _SSSForce_Flicker
+        second: 0
+      data:
+        first:
+          name: _SSSPull_Height
+        second: .529999971
+      data:
+        first:
+          name: _SSSMask0_aScale
+        second: 29.2600002
+      data:
+        first:
+          name: _SSSMask0_Copy_aScale
+        second: 308.929993
+      data:
+        first:
+          name: _SSSMask0_Copy_Copy_aScale
+        second: 19.8600006
+      data:
+        first:
+          name: _SSSAlpha_aPower
+        second: .170000002
+      data:
+        first:
+          name: _SSSEmission2_aMultiply
+        second: 2.38000011
+      data:
+        first:
+          name: _SSSNormal_Map_aScale
+        second: 5.38000011
+      data:
+        first:
+          name: _SSSMask2_aSize
+        second: .1071437
+      data:
+        first:
+          name: _SSSMask2_aZ_Offset
+        second: 13.453125
+      data:
+        first:
+          name: _SSSMask2_aScale
+        second: -2.0999999
+      data:
+        first:
+          name: _SSSAlpha2_Copy_2_Copy_aMix_Amount
+        second: 1
+      data:
+        first:
+          name: _SSSMask2_Copy_aScale
+        second: 5.9000001
+      data:
+        first:
+          name: _SSSMask2_Copy_aSize
+        second: .142857999
+      data:
+        first:
+          name: _SSSMask3_aX_Offset
+        second: 4.484375
+      data:
+        first:
+          name: _SSSMask32_aPower
+        second: 6.44000006
+      data:
+        first:
+          name: _SSSFlicker_aX_Offset
+        second: 26.90625
+      data:
+        first:
+          name: _SSSFlickerNoise_aScale
+        second: 7.73999977
+      data:
+        first:
+          name: _SSSFlickerNoise_aY_Offset
+        second: 26.90625
     m_Colors:
       data:
         first:
@@ -287,3 +378,39 @@ Material:
         first:
           name: _SSSTexture3_aMain_Color
         second: {r: .245242193, g: .617647111, b: .343820006, a: 1}
+      data:
+        first:
+          name: _SSSFlicker_Axis
+        second: {r: .279411793, g: 0, b: .279411793, a: 1}
+      data:
+        first:
+          name: _SSSPull_Axis
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SSSSpecular_aMain_Color
+        second: {r: 0, g: .586206913, b: 1, a: 1}
+      data:
+        first:
+          name: _SSSTexture_Copy_aMain_Color
+        second: {r: 0, g: .172413796, b: 1, a: 1}
+      data:
+        first:
+          name: _SSSAlpha2_Copy_aMain_Color
+        second: {r: .613793373, g: 0, b: 1, a: 1}
+      data:
+        first:
+          name: _SSSEmission2_aMain_Color
+        second: {r: 0, g: .503448486, b: 1, a: 1}
+      data:
+        first:
+          name: _SSSEmission_aMain_Color
+        second: {r: 0, g: .0896549225, b: 1, a: 1}
+      data:
+        first:
+          name: _SSSAlpha2_Copy_2_Copy_aMain_Color
+        second: {r: 1, g: .393103391, b: 0, a: 1}
+      data:
+        first:
+          name: _SSSEmission3_aMain_Color
+        second: {r: 1, g: .475862086, b: 0, a: 1}

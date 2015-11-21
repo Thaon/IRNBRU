@@ -134,7 +134,7 @@ Material:
       data:
         first:
           name: _SSSPull_Height
-        second: .529999971
+        second: 1.23000002
     m_Colors:
       data:
         first:
@@ -147,7 +147,7 @@ Material:
       data:
         first:
           name: _SSSFlicker_Axis
-        second: {r: .279411793, g: 0, b: .279411793, a: 1}
+        second: {r: .345588207, g: .109266862, b: .339069039, a: 1}
       data:
         first:
           name: _SSSPull_Axis
