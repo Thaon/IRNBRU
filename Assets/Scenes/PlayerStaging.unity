@@ -741,6 +741,10 @@ Prefab:
       propertyPath: speed
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 169480, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
   m_IsPrefabParent: 0
@@ -757,7 +761,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 475866, guid: 3863e02a3f506b142a2abea45ce3388c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -26.6709995
+      value: -26.5209999
       objectReference: {fileID: 0}
     - target: {fileID: 475866, guid: 3863e02a3f506b142a2abea45ce3388c, type: 2}
       propertyPath: m_LocalPosition.z

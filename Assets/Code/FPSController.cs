@@ -128,5 +128,14 @@ public class FPSController : MonoBehaviour {
 
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.tag == "Grabable")
+        {
+            Rigidbody body = hit.collider.attachedRigidbody;
+            Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+            body.AddForce(pushDir, ForceMode.Impulse);
+        }
+    }
     
 }
