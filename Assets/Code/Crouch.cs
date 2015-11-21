@@ -15,13 +15,11 @@ public class Crouch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        transform.position += CrouchMovement();
-        Mathf.Lerp(m_height, m_newHeight, m_speed*Time.deltaTime);
         GetComponent<CharacterController>().height = m_newHeight;
 
 	}
 
-    Vector3 CrouchMovement()
+    void CrouchMovement()
     {
         bool crouchButton = Input.GetKey(KeyCode.LeftControl);
 
@@ -29,18 +27,14 @@ public class Crouch : MonoBehaviour {
 
         if (crouchButton)
         {
-            Debug.Log("£crouched");
-            m_height = 2.0f;
-            m_newHeight = 1.0f;
+            iTween.MoveBy(gameObject, iTween.Hash("from",m_height, "to", m_newHeight,"speed",m_speed));
         }
         else
         {
-            m_height = 1.0f;
-            m_newHeight = 2.0f;
+            iTween.MoveBy(gameObject, iTween.Hash("to", m_newHeight, "from", m_height, "speed", m_speed));
         }
           
 
-        return pos;
     }
 
     
