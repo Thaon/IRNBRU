@@ -45,5 +45,9 @@ public class Changeable : MonoBehaviour {
         {
             m_alternateObject.GetComponent<Changeable>().Activate();
         }
+        else
+        {
+            Activate();
+        }
     }
 }
