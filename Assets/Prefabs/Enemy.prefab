@@ -9,11 +9,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 412648}
   - 33: {fileID: 3321724}
-  - 136: {fileID: 13622074}
   - 23: {fileID: 2385468}
   - 136: {fileID: 13612516}
   - 54: {fileID: 5448886}
   - 114: {fileID: 11418648}
+  - 143: {fileID: 14349574}
+  - 65: {fileID: 6549376}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -26, z: -38.7599983}
+  m_LocalPosition: {x: 6.34000015, y: -12.8000002, z: -5.61000013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,6 +80,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!65 &6549376
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.16200638, y: .551206112, z: 3.58871555}
+  m_Center: {x: -3.58100128, y: .724396706, z: .0357336998}
 --- !u!114 &11418648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,17 +103,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9035fd97e2a760b4dabd797b2f166ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  followDistance: 2.9000001
-  minSpeed: 300
-  maxSpeed: 300
-  points:
-  - {x: 0, y: -26, z: 0}
-  - {x: -12, y: -26, z: 0}
-  - {x: -12, y: -26, z: 10}
-  layer:
+  m_followDistance: 0
+  m_minSpeed: 50
+  m_maxSpeed: 80
+  m_points: []
+  m_layer:
     serializedVersion: 2
     m_Bits: 0
+  m_IsFollowing: 0
 --- !u!136 &13612516
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -114,8 +124,8 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13622074
-CapsuleCollider:
+--- !u!143 &14349574
+CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -123,9 +133,13 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .5
+  serializedVersion: 2
   m_Height: 2
-  m_Direction: 1
+  m_Radius: .5
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: .00100000005
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:

@@ -1,78 +1,110 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour {
 
-    public GameObject player;
-    public float followDistance;
-    public float minSpeed = 50f;
-    public float maxSpeed = 80f;
-    public Vector3[] points;
-    public LayerMask layer;
+    CharacterController m_CC;
+    GameObject m_player;
+    public float m_followDistance;
+    public float m_minSpeed = 50f;
+    public float m_maxSpeed = 80f;
+    public List<Vector3> m_points;
+    public LayerMask m_layer;
 
-    public bool IsFollowing = false;
-    private int current = 0;
+    public bool m_IsFollowing = false;
+    private int m_current = 0;
+
+    public enum state {wayPointing, followingPlayer}
+
+    state enemyState = state.wayPointing;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+    {
+        m_CC = GetComponent<CharacterController>();
+        m_player = null;
+        foreach(Transform waypoint in GetComponentsInChildren<Transform>())
+        {
+            if (waypoint.gameObject != this.gameObject)
+            {
+                m_points.Add(waypoint.transform.position);
+            }
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        RayCasting();
-	}
-
-    void RayCasting()
-    {
-        Vector3 pos = Vector3.zero;
-
-        if (Vector3.Distance(points[current], transform.position) < 1)
+        switch (enemyState)
         {
-            current++;
-            if (current >= points.Length)
-                current = 0;
+            case state.wayPointing:
+                //look for player and follow waypoints
+                FollowWayPoints();
+                break;
+
+            case state.followingPlayer:
+                //follow the player until is not in vision anymore, then return to the last patrolling position
+                LookForPlayer();
+                break;
         }
 
-        if (player != null)
+	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Collider>().tag == "Player")
+        {
+            m_player = other.GetComponent<Collider>().gameObject;
+            enemyState = state.followingPlayer;
+        }
+    }
+
+    void FollowWayPoints()
+    {
+        if (Vector3.Distance(m_points[m_current], transform.position) < 1)
+        {
+            m_current++;
+            //Debug.Log(m_current);
+            if (m_current == m_points.Count)
+                m_current = 0;
+        }
+
+        Vector3 direction = m_points[m_current] - transform.position;
+        direction = direction.normalized * m_minSpeed * Time.deltaTime;
+        m_points[m_current] = new Vector3(m_points[m_current].x, transform.position.y, m_points[m_current].z);
+        transform.LookAt(m_points[m_current], Vector3.up);
+        m_CC.Move(direction);
+    }
+
+    void LookForPlayer()
+    {
+        if (m_player != null)
         {
             RaycastHit hit;
-            Ray ray = new Ray(transform.position, (player.transform.position - transform.position).normalized);
-            Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized, Color.green);
-            Physics.Raycast(ray, out hit, followDistance, layer);
+            Ray ray = new Ray(transform.position, (m_player.transform.position - transform.position).normalized);
+            Debug.DrawRay(transform.position, (m_player.transform.position - transform.position).normalized, Color.green);
+            Physics.Raycast(ray, out hit, m_followDistance, m_layer);
 
             if (hit.collider != null)
             {
                 if (hit.collider.tag == "Player")
                 {
-                    IsFollowing = true;
+                    FollowPlayer();
                 }
 
                 else
                 {
-                    IsFollowing = false;
+                    enemyState = state.wayPointing;
+                    m_player = null;
                 }
             }
-            else
-                IsFollowing = false;
-
-
         }
     }
 
-    private void FixedUpdate()
+    void FollowPlayer()
     {
-        if (!IsFollowing)
-        {
-            Vector3 direction = points[current] - transform.position;
-            direction = direction.normalized;
-            GetComponent<Rigidbody>().velocity = direction * minSpeed * Time.deltaTime;
-        }
-        else if (IsFollowing)
-        {
-            Vector3 direction = (player.transform.position - transform.position).normalized;
-            GetComponent<Rigidbody>().velocity = direction * Random.Range(minSpeed, maxSpeed) * Time.deltaTime;
-        }
+        Vector3 direction = (m_player.transform.position - transform.position).normalized;
+        m_CC.SimpleMove(direction * m_minSpeed * Time.deltaTime);
     }
 }

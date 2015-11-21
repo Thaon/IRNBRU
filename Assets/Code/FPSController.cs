@@ -42,13 +42,16 @@ public class FPSController : MonoBehaviour {
         height = GetComponent<CharacterController>().height;
         MouseLook();
 
-        if (Input.GetJoystickNames()[0] == "Controller (XBOX 360 For Windows)")
+        if (Input.GetJoystickNames().Length > 0)
         {
-            Debug.Log("Controller Connected");
-            gamepadConnected = true;
+            if (Input.GetJoystickNames()[0] == "Controller (XBOX 360 For Windows)")
+            {
+                Debug.Log("Controller Connected");
+                gamepadConnected = true;
+            }
+            else
+                gamepadConnected = false;
         }
-        else
-            gamepadConnected = false;
 
     }
 
