@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour {
     public Vector3[] points;
     public LayerMask layer;
 
-    private bool IsFollowing = false;
+    public bool IsFollowing = false;
     private int current = 0;
 
 	// Use this for initialization
