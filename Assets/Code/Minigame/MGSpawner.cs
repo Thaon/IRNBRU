@@ -30,4 +30,13 @@ public class MGSpawner : MonoBehaviour {
         Spawn(ran);
         StartCoroutine(SpawnEnemies(m_timeBetweenSpawns));
     }
+
+    public void Reset()
+    {
+        StopAllCoroutines();
+        StartCoroutine(SpawnEnemies(m_timeBetweenSpawns));
+        m_enemies[0].GetComponent<MGEnemy>().Restart();
+        m_enemies[1].GetComponent<MGEnemy>().Restart();
+        m_enemies[2].GetComponent<MGEnemy>().Restart();
+    }
 }

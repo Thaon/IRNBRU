@@ -3,6 +3,9 @@ using System.Collections;
 
 public class MGPlayer : MonoBehaviour {
 
+    public GameObject m_player;
+    public GameObject m_minigame;
+
     public GameObject m_leftLane;
     public GameObject m_centerLane;
     public GameObject m_rightLane;
@@ -67,6 +70,10 @@ public class MGPlayer : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "MGEnemy")
+        {
             Debug.Log("you lost!");
+            m_player.SetActive(true);
+            m_minigame.SetActive(false);
+        }
     }
 }
