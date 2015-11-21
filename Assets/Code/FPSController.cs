@@ -3,6 +3,10 @@ using System.Collections;
 
 public class FPSController : MonoBehaviour {
 
+    bool characterController;
+
+    float height = 0.0f;
+
     public float speed = 5.0f;
 
     //Input stuff
@@ -31,7 +35,7 @@ public class FPSController : MonoBehaviour {
     {
         //move first
         GetComponent<CharacterController>().SimpleMove(Movement(speed));
-
+        height = GetComponent<CharacterController>().height;
         MouseLook();
     }
 
@@ -61,6 +65,10 @@ public class FPSController : MonoBehaviour {
         {
             pos -= transform.forward * speed * Time.deltaTime;
         }
+
+        pos.y = height + GetComponent<CharacterController>().transform.position.y;
+
+        
 
         return pos;
     }
@@ -119,4 +127,6 @@ public class FPSController : MonoBehaviour {
         #endregion
 
     }
+
+    
 }
