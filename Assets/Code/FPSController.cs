@@ -48,8 +48,7 @@ public class FPSController : MonoBehaviour {
         up = Input.GetKey(KeyCode.W);
         down = Input.GetKey(KeyCode.S);
         sprint = Input.GetKey(KeyCode.LeftShift);
-
-
+        
 
         Vector3 pos=Vector3.zero;
 
@@ -72,9 +71,8 @@ public class FPSController : MonoBehaviour {
                 pos -= transform.forward * sprintSpeed * Time.deltaTime;
             }
 
-           
         }
-        else
+        else if (sprint != false)
         {
             if (left)
             {
@@ -92,6 +90,25 @@ public class FPSController : MonoBehaviour {
             {
                 pos -= transform.forward * speed * Time.deltaTime;
             }
+
+        }
+
+        //Gamepad Controller
+        if (Input.GetAxis("Horizontal") <=-0.1f)
+        {
+            pos -= transform.right * speed * Time.deltaTime;
+        }
+        if (Input.GetAxis("Horizontal")>= 0.1f)
+        {
+            pos += transform.right * speed * Time.deltaTime;
+        }
+        if (Input.GetAxis("Vertical") <= -0.1f)
+        {
+            pos -= transform.forward * speed * Time.deltaTime;
+        }
+        if (Input.GetAxis("Vertical") >= 0.1f)
+        {
+            pos += transform.forward * speed * Time.deltaTime;
         }
 
         pos.y = height + GetComponent<CharacterController>().transform.position.y;
@@ -121,9 +138,11 @@ public class FPSController : MonoBehaviour {
 
         // Get raw mouse input for a cleaner reading on more sensitive mice.
         var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        var mouseDelta2 = new Vector2(Input.GetAxisRaw("RightThumbStickHorizontal"), Input.GetAxisRaw("RightThumbStickVertical"));
 
         // Scale input against the sensitivity setting and multiply that against the smoothing value.
         mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity.x * smoothing.x, sensitivity.y * smoothing.y));
+        mouseDelta2 = Vector2.Scale(mouseDelta, new Vector2(sensitivity.x * smoothing.x, sensitivity.y * smoothing.y));
 
         // Interpolate mouse movement over time to apply smoothing delta.
         _smoothMouse.x = Mathf.Lerp(_smoothMouse.x, mouseDelta.x, 1f / smoothing.x);
