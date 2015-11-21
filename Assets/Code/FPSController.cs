@@ -23,6 +23,8 @@ public class FPSController : MonoBehaviour {
     public Vector2 smoothing = new Vector2(3, 3);
     public Vector2 targetDirection;
     public Vector2 targetCharacterDirection;
+    public bool gamepadConnected = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -93,6 +95,8 @@ public class FPSController : MonoBehaviour {
 
         }
 
+        
+
         //Gamepad Controller
         if (Input.GetAxis("Horizontal") <=-0.1f)
         {
@@ -138,11 +142,16 @@ public class FPSController : MonoBehaviour {
 
         // Get raw mouse input for a cleaner reading on more sensitive mice.
         var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        var mouseDelta2 = new Vector2(Input.GetAxisRaw("RightThumbStickHorizontal"), Input.GetAxisRaw("RightThumbStickVertical"));
+        var mouseDelta2 = new Vector2(Input.GetAxisRaw("Joystick X"), Input.GetAxisRaw("Joystick Y"));
+
+      
 
         // Scale input against the sensitivity setting and multiply that against the smoothing value.
-        mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity.x * smoothing.x, sensitivity.y * smoothing.y));
-        mouseDelta2 = Vector2.Scale(mouseDelta, new Vector2(sensitivity.x * smoothing.x, sensitivity.y * smoothing.y));
+        if (gamepadConnected)
+            mouseDelta = Vector2.Scale(mouseDelta2, new Vector2(sensitivity.x * smoothing.x, sensitivity.y * smoothing.y));
+        else
+            mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity.x * smoothing.x, sensitivity.y * smoothing.y));
+       
 
         // Interpolate mouse movement over time to apply smoothing delta.
         _smoothMouse.x = Mathf.Lerp(_smoothMouse.x, mouseDelta.x, 1f / smoothing.x);

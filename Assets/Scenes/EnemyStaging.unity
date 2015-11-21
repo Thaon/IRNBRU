@@ -471,6 +471,14 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 633177615}
+    - target: {fileID: 11418648, guid: 78ec993a10af3bb4ebfd6b26add23199, type: 2}
+      propertyPath: followDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418648, guid: 78ec993a10af3bb4ebfd6b26add23199, type: 2}
+      propertyPath: IsFollowing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78ec993a10af3bb4ebfd6b26add23199, type: 2}
   m_IsPrefabParent: 0
