@@ -163,17 +163,9 @@ public class FPSController : MonoBehaviour {
 
     void MouseLook()
     {
-        // Ensure the cursor is always locked when set
-        if (lockCursor)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
+       
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-        }
 
         #region Mouselook
 
