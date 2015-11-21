@@ -31,6 +31,7 @@ public class FPSController : MonoBehaviour {
 
         // Set target direction to the camera's initial orientation.
         targetDirection = transform.localRotation.eulerAngles;
+       
 	}
 
 
@@ -40,6 +41,15 @@ public class FPSController : MonoBehaviour {
         GetComponent<CharacterController>().SimpleMove(Movement(speed));
         height = GetComponent<CharacterController>().height;
         MouseLook();
+
+        if (Input.GetJoystickNames()[0] == "Controller (XBOX 360 For Windows)")
+        {
+            Debug.Log("Controller Connected");
+            gamepadConnected = true;
+        }
+        else
+            gamepadConnected = false;
+
     }
 
     Vector3 Movement(float speed)
@@ -50,9 +60,11 @@ public class FPSController : MonoBehaviour {
         up = Input.GetKey(KeyCode.W);
         down = Input.GetKey(KeyCode.S);
         sprint = Input.GetKey(KeyCode.LeftShift);
-        
 
-        Vector3 pos=Vector3.zero;
+        Vector3 pos = Vector3.zero;
+
+        #region Input_Manager
+        
 
         if (sprint)
         {
@@ -95,25 +107,51 @@ public class FPSController : MonoBehaviour {
 
         }
 
-        
+        bool controllerSprint=Input.GetButton("Sprint");
 
-        //Gamepad Controller
-        if (Input.GetAxis("Horizontal") <=-0.1f)
+        if (controllerSprint)
         {
-            pos -= transform.right * speed * Time.deltaTime;
+            //Gamepad Controller
+            if (Input.GetAxis("Horizontal") <= -0.1f)
+            {
+                pos -= transform.right * sprintSpeed * Time.deltaTime;
+            }
+            if (Input.GetAxis("Horizontal") >= 0.1f)
+            {
+                pos += transform.right * sprintSpeed * Time.deltaTime;
+            }
+            if (Input.GetAxis("Vertical") <= -0.1f)
+            {
+                pos -= transform.forward * sprintSpeed * Time.deltaTime;
+            }
+            if (Input.GetAxis("Vertical") >= 0.1f)
+            {
+                pos += transform.forward * sprintSpeed * Time.deltaTime;
+            }
         }
-        if (Input.GetAxis("Horizontal")>= 0.1f)
+        else if (!controllerSprint)
         {
-            pos += transform.right * speed * Time.deltaTime;
+            //Gamepad Controller
+            if (Input.GetAxis("Horizontal") <= -0.1f)
+            {
+                pos -= transform.right * speed * Time.deltaTime;
+            }
+            if (Input.GetAxis("Horizontal") >= 0.1f)
+            {
+                pos += transform.right * speed * Time.deltaTime;
+            }
+            if (Input.GetAxis("Vertical") <= -0.1f)
+            {
+                pos -= transform.forward * speed * Time.deltaTime;
+            }
+            if (Input.GetAxis("Vertical") >= 0.1f)
+            {
+                pos += transform.forward * speed * Time.deltaTime;
+            }
         }
-        if (Input.GetAxis("Vertical") <= -0.1f)
-        {
-            pos -= transform.forward * speed * Time.deltaTime;
-        }
-        if (Input.GetAxis("Vertical") >= 0.1f)
-        {
-            pos += transform.forward * speed * Time.deltaTime;
-        }
+
+       // bool crouch = Input.GetButton("Crouch");
+        #endregion
 
         pos.y = height + GetComponent<CharacterController>().transform.position.y;
         
