@@ -12,7 +12,7 @@ public class FPSTimeShift : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	    if (Input.GetButton("TimeShift"))
+	    if (Input.GetButton("TimeShift") && m_canTimeShift)
         {
             m_canTimeShift = false;
             StartCoroutine(GlitchIn());
