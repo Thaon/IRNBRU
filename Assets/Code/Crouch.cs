@@ -3,38 +3,47 @@ using System.Collections;
 
 public class Crouch : MonoBehaviour {
 
-    float m_height=2.0f;
-    float m_newHeight = 1.0f;
+    float m_standingHeight=2.0f;
+    float m_crouchedHeight = 1.0f;
+    float m_height;
     float m_speed = 3.0f;
 
 	// Use this for initialization
 	void Start () {
-	
+        m_height = m_standingHeight;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        GetComponent<CharacterController>().height = m_newHeight;
+        GetComponent<CharacterController>().height = m_height;
+        CrouchMovement();
 
 	}
 
     void CrouchMovement()
     {
-        bool crouchButton = Input.GetKey(KeyCode.LeftControl);
 
         Vector3 pos = Vector3.zero;
 
-        if (crouchButton)
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            iTween.MoveBy(gameObject, iTween.Hash("from",m_height, "to", m_newHeight,"speed",m_speed));
+            iTween.ValueTo(gameObject, iTween.Hash("to", m_crouchedHeight, "from", m_standingHeight, "speed", m_speed, "easetype", iTween.EaseType.linear, "onupdate", "UpdateHeight"));
+           
         }
-        else
+        
+        if (Input.GetKeyUp(KeyCode.LeftControl))
         {
-            iTween.MoveBy(gameObject, iTween.Hash("to", m_newHeight, "from", m_height, "speed", m_speed));
+            iTween.ValueTo(gameObject, iTween.Hash("to", m_standingHeight, "from", m_crouchedHeight, "speed", m_speed, "easetype", iTween.EaseType.linear, "onupdate", "UpdateHeight"));
+           
         }
           
 
+    }
+
+    void UpdateHeight(float value)
+    {
+        m_height = value;
     }
 
     
