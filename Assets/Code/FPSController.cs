@@ -42,10 +42,19 @@ public class FPSController : MonoBehaviour {
 
     }
 
+    void GoToMainMenu()
+    {
+        Application.LoadLevel(0);
+    }
 
     void Update()
     {
        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Application.LoadLevel("EnvironmentStaging");
+        }
+
         if (paused.paused == true || m_dialogueIsPrompted)
         {
 

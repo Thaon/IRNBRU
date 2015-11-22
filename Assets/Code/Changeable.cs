@@ -26,6 +26,8 @@ public class Changeable : MonoBehaviour {
         {
             if (GetComponent<MeshCollider>() != null)
                 GetComponent<MeshCollider>().enabled = false;
+            if (GetComponent<BoxCollider>() != null)
+                GetComponent<BoxCollider>().enabled = false;
             if (m_burnAmount < 1.2)
             {
                 m_burnAmount += .01f;
@@ -39,6 +41,8 @@ public class Changeable : MonoBehaviour {
         {
             if (GetComponent<MeshCollider>() != null)
                 GetComponent<MeshCollider>().enabled = true;
+            if (GetComponent<BoxCollider>() != null)
+                GetComponent<BoxCollider>().enabled = true;
             if (m_burnAmount > - 0.5f)
             {
                 GetComponent<MeshRenderer>().enabled = true;
@@ -50,7 +54,7 @@ public class Changeable : MonoBehaviour {
 
     public void Dismantle()
     {
-        if (m_alternateObject != null)
+        if (m_alternateObject != null && m_alternateObject.activeInHierarchy)
         {
             m_alternateObject.GetComponent<Changeable>().Activate();
         }

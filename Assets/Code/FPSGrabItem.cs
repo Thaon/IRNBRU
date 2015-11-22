@@ -34,6 +34,11 @@ public class FPSGrabItem : MonoBehaviour {
                         iTween.MoveTo(hit.collider.gameObject, m_grabTarget.transform.position, 1.0f);
                         m_isCarryingItem = true;
                     }
+                    if (hit.collider.tag == "Interactible")
+                    {
+                        Debug.Log("done");
+                        hit.collider.GetComponent<InteractibleScript>().Activate();
+                    }
                 }
             }
             else

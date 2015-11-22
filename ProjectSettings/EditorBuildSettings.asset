@@ -8,8 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
   - enabled: 1
-    path: Assets/Scenes/PlayerStaging.unity
-  - enabled: 1
     path: Assets/Scenes/EnvironmentStaging.unity
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/PlayerStaging.unity
+  - enabled: 0
     path: Assets/Scenes/Room1.unity

@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Door
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: fb57d9f82e3593d488a78fd09c2ce120, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -78,6 +78,13 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SSSBurn_Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: 354f7eb7f261f094399e01c57c0c2a0d, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -90,7 +97,7 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: .5
+        second: -.5
       data:
         first:
           name: _Parallax
@@ -127,6 +134,14 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _SSSGlow
+        second: 4.5625
+      data:
+        first:
+          name: _SSSGlow_Width
+        second: -.526250005
     m_Colors:
       data:
         first:
@@ -136,3 +151,7 @@ Material:
         first:
           name: _Color
         second: {r: .00784313772, g: .0627451017, b: .0588235334, a: 1}
+      data:
+        first:
+          name: _SSSTexture_aMain_Color
+        second: {r: .0402248986, g: .042859979, b: .0441176295, a: 1}
