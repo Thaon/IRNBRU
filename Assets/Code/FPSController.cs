@@ -52,7 +52,7 @@ public class FPSController : MonoBehaviour {
         }
         else
         {
-            GetComponent<CharacterController>().Move(Movement(speed) * Time.deltaTime);
+            GetComponent<CharacterController>().SimpleMove(Movement(speed));
             height = GetComponent<CharacterController>().height;
             MouseLook();
         }
@@ -75,6 +75,11 @@ public class FPSController : MonoBehaviour {
     {
 
         Vector3 pos = Vector3.zero;
+
+        if (!GetComponent<CharacterController>().isGrounded)
+        {
+            pos.y = Physics.gravity.y;
+        }
 
         #region Input_Manager
 
@@ -121,7 +126,7 @@ public class FPSController : MonoBehaviour {
             }
         }
 
-       // bool crouch = Input.GetButton("Crouch");
+        // bool crouch = Input.GetButton("Crouch");
         #endregion
 
         return pos;
