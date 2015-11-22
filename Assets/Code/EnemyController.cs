@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour {
 
             case state.followingPlayer:
                 //follow the player until is not in vision anymore, then return to the last patrolling position
-                LookForPlayer();
+                FollowPlayer();
                 break;
         }
 
@@ -54,6 +54,7 @@ public class EnemyController : MonoBehaviour {
     {
         if (other.GetComponent<Collider>().tag == "Player")
         {
+            m_IsFollowing = true;
             m_player = other.GetComponent<Collider>().gameObject;
             enemyState = state.followingPlayer;
             //Debug.Log("Following!");
@@ -106,5 +107,12 @@ public class EnemyController : MonoBehaviour {
         //transform.LookAt(m_player.transform.position);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(m_player.transform.position - transform.position), 30f * Time.deltaTime);
         m_CC.SimpleMove(direction.normalized * m_minSpeed);
+
+        if (Vector3.Distance(transform.position, m_player.transform.position) > m_followDistance)
+        {
+            m_IsFollowing = false;
+            m_player = null;
+            enemyState = state.wayPointing;
+        }
     }
 }

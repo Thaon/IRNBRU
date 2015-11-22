@@ -19,7 +19,7 @@ public class FPSMinigameTrigger : MonoBehaviour {
 	    if (Input.GetKeyDown(KeyCode.Q))
         {
             m_minigame.SetActive(true);
-            m_minigame.GetComponentInChildren<MGSpawner>().Reset(); ;
+            m_minigame.GetComponentInChildren<MGSpawner>().Reset();
             m_player.SetActive(false);
         }
 	}

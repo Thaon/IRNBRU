@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour {
          if (Input.GetButtonDown("PauseButton"))
          {
              paused = !paused;
-             togglePause();
+             TogglePause();
          }
             
      }
@@ -35,7 +35,7 @@ public class PauseMenu : MonoBehaviour {
          }
      }  
      
-     bool togglePause()
+     public bool TogglePause()
      {
          if(Time.timeScale == 0f)
          {

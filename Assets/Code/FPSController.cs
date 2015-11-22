@@ -8,8 +8,10 @@ public class FPSController : MonoBehaviour {
     FPSController player;
     float height = 0.0f;
 
-    public float speed = 5.0f;
-    public float sprintSpeed=600.0f;
+    bool m_dialogueIsPrompted = false;
+
+    public float speed = 10.0f;
+    public float sprintSpeed=15.0f;
 
     //Input stuff
     bool left, right, up, down, sprint;
@@ -41,24 +43,17 @@ public class FPSController : MonoBehaviour {
     void Update()
     {
        
-
-        if (paused.paused == true)
+        if (paused.paused == true || m_dialogueIsPrompted)
         {
-            speed = 0f;
-            sprintSpeed = 0f;
-            player.enabled = false;
+
         }
         else
         {
-            speed = 300f;
-            sprintSpeed = 600f;
-            player.enabled = true;
+            GetComponent<CharacterController>().Move(Movement(speed) * Time.deltaTime);
+            height = GetComponent<CharacterController>().height;
+            MouseLook();
         }
 
-        //move first
-        GetComponent<CharacterController>().SimpleMove(Movement(speed));
-        height = GetComponent<CharacterController>().height;
-        MouseLook();
 
         if (Input.GetJoystickNames().Length > 0)
         {
@@ -75,58 +70,10 @@ public class FPSController : MonoBehaviour {
 
     Vector3 Movement(float speed)
     {
- 
-        left = Input.GetKey(KeyCode.A);
-        right = Input.GetKey(KeyCode.D);
-        up = Input.GetKey(KeyCode.W);
-        down = Input.GetKey(KeyCode.S);
-        sprint = Input.GetKey(KeyCode.LeftShift);
 
         Vector3 pos = Vector3.zero;
 
         #region Input_Manager
-        
-
-        if (sprint)
-        {
-            if (left)
-            {
-                pos -= transform.right * sprintSpeed * Time.deltaTime;
-            }
-            if (right)
-            {
-                pos += transform.right * sprintSpeed * Time.deltaTime;
-            }
-            if (up)
-            {
-                pos += transform.forward * sprintSpeed * Time.deltaTime;
-            }
-            if (down)
-            {
-                pos -= transform.forward * sprintSpeed * Time.deltaTime;
-            }
-
-        }
-        else if (sprint != false)
-        {
-            if (left)
-            {
-                pos -= transform.right * speed * Time.deltaTime;
-            }
-            if (right)
-            {
-                pos += transform.right * speed * Time.deltaTime;
-            }
-            if (up)
-            {
-                pos += transform.forward * speed * Time.deltaTime;
-            }
-            if (down)
-            {
-                pos -= transform.forward * speed * Time.deltaTime;
-            }
-
-        }
 
         bool controllerSprint=Input.GetButton("Sprint");
 
@@ -135,19 +82,19 @@ public class FPSController : MonoBehaviour {
             //Gamepad Controller
             if (Input.GetAxis("Horizontal") <= -0.1f)
             {
-                pos -= transform.right * sprintSpeed * Time.deltaTime;
+                pos -= transform.right * sprintSpeed;
             }
             if (Input.GetAxis("Horizontal") >= 0.1f)
             {
-                pos += transform.right * sprintSpeed * Time.deltaTime;
+                pos += transform.right * sprintSpeed;
             }
             if (Input.GetAxis("Vertical") <= -0.1f)
             {
-                pos -= transform.forward * sprintSpeed * Time.deltaTime;
+                pos -= transform.forward * sprintSpeed;
             }
             if (Input.GetAxis("Vertical") >= 0.1f)
             {
-                pos += transform.forward * sprintSpeed * Time.deltaTime;
+                pos += transform.forward * sprintSpeed;
             }
         }
         else if (!controllerSprint)
@@ -155,19 +102,19 @@ public class FPSController : MonoBehaviour {
             //Gamepad Controller
             if (Input.GetAxis("Horizontal") <= -0.1f)
             {
-                pos -= transform.right * speed * Time.deltaTime;
+                pos -= transform.right * speed;
             }
             if (Input.GetAxis("Horizontal") >= 0.1f)
             {
-                pos += transform.right * speed * Time.deltaTime;
+                pos += transform.right * speed;
             }
             if (Input.GetAxis("Vertical") <= -0.1f)
             {
-                pos -= transform.forward * speed * Time.deltaTime;
+                pos -= transform.forward * speed;
             }
             if (Input.GetAxis("Vertical") >= 0.1f)
             {
-                pos += transform.forward * speed * Time.deltaTime;
+                pos += transform.forward * speed;
             }
         }
 
@@ -181,9 +128,16 @@ public class FPSController : MonoBehaviour {
 
     void MouseLook()
     {
-       
+        if (paused.paused)
+        {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         #region Mouselook
 
@@ -242,4 +196,9 @@ public class FPSController : MonoBehaviour {
         }
     }
     
+
+    public void ToggleDialoguePrompt()
+    {
+        m_dialogueIsPrompted = !m_dialogueIsPrompted;
+    }
 }
