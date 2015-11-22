@@ -40,12 +40,20 @@ public class PauseMenu : MonoBehaviour {
          if(Time.timeScale == 0f)
          {
              Time.timeScale = 1f;
-             return(false);
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            return (false);
          }
          else
          {
              Time.timeScale = 0f;
-             return(true);    
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            return (true);    
          }
      }
 

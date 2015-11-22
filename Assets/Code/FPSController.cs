@@ -36,8 +36,11 @@ public class FPSController : MonoBehaviour {
         targetDirection = transform.localRotation.eulerAngles;
         paused = GetComponent<PauseMenu>();
         player = GetComponent<FPSController>();
-       
-	}
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+    }
 
 
     void Update()
@@ -126,17 +129,6 @@ public class FPSController : MonoBehaviour {
 
     void MouseLook()
     {
-        if (paused.paused || m_dialogueIsPrompted)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-
         #region Mouselook
 
         // Allow the script to clamp based on a desired target value.
@@ -198,5 +190,15 @@ public class FPSController : MonoBehaviour {
     public void ToggleDialoguePrompt()
     {
         m_dialogueIsPrompted = !m_dialogueIsPrompted;
+        if (m_dialogueIsPrompted)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }
