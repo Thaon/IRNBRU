@@ -37,6 +37,7 @@ GameObject:
   - 114: {fileID: 11471508}
   - 114: {fileID: 11423564}
   - 114: {fileID: 11408898}
+  - 114: {fileID: 11457546}
   m_Layer: 0
   m_Name: Character 1
   m_TagString: Player
@@ -214,6 +215,19 @@ MonoBehaviour:
   Distortion: .200000003
   CubicDistortion: .600000024
   Scale: .800000012
+--- !u!114 &11457546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23961ce11bf3d74fa00403498476367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rootNode: {fileID: 169480}
+  m_glitching: 0
 --- !u!114 &11457842
 MonoBehaviour:
   m_ObjectHideFlags: 1

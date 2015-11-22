@@ -57,4 +57,9 @@ public class FPSTimeShift : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         m_canTimeShift = true;
     }
+
+    public void GlitchInMethod()
+    {
+        StartCoroutine(GlitchIn());
+    }
 }

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerDeath : MonoBehaviour {
 
+    public GameObject m_deathFlowChart;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -16,6 +18,9 @@ public class PlayerDeath : MonoBehaviour {
     void OnTriggerEnter(Collider target)
     {
         if (target.gameObject.tag == "Player")
-            Destroy(target);
+        {
+            m_deathFlowChart.SetActive(true);
+        
+        }
     }
 }
