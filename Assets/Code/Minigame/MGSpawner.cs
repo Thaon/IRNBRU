@@ -57,5 +57,4 @@ public class MGSpawner : MonoBehaviour {
             Reset();
             Debug.Log("You won!");
     }
-
 }
