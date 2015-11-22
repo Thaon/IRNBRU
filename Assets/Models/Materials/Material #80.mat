@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 'Material #76'
+  m_Name: 'Material #80'
   m_Shader: {fileID: 4800000, guid: fb57d9f82e3593d488a78fd09c2ce120, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -154,4 +154,4 @@ Material:
       data:
         first:
           name: _SSSTexture_aMain_Color
-        second: {r: .0661764741, g: .0145977493, b: .0145977493, a: 1}
+        second: {r: .360294104, g: .29141435, b: .29141435, a: 1}

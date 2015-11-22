@@ -154,4 +154,4 @@ Material:
       data:
         first:
           name: _SSSTexture_aMain_Color
-        second: {r: .524545848, g: .535168827, b: .566176474, a: 1}
+        second: {r: .875, g: .860091269, b: .739889681, a: 1}

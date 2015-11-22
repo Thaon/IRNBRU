@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Grabable
   - MGEnemy
+  - Waypoint
   layers:
   - Default
   - TransparentFX

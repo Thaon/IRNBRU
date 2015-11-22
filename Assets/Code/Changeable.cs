@@ -24,17 +24,24 @@ public class Changeable : MonoBehaviour {
     {
         if (!m_isVisible)
         {
-            GetComponent<MeshCollider>().enabled = false;
+            if (GetComponent<MeshCollider>() != null)
+                GetComponent<MeshCollider>().enabled = false;
             if (m_burnAmount < 1.2)
             {
                 m_burnAmount += .01f;
             }
+            else
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+            }
         }
         else
         {
-            GetComponent<MeshCollider>().enabled = true;
+            if (GetComponent<MeshCollider>() != null)
+                GetComponent<MeshCollider>().enabled = true;
             if (m_burnAmount > - 0.5f)
             {
+                GetComponent<MeshRenderer>().enabled = true;
                 m_burnAmount -= .01f;
             }
         }

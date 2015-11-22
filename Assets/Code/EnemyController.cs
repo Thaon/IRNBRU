@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour {
         m_player = null;
         foreach(Transform waypoint in GetComponentsInChildren<Transform>())
         {
-            if (waypoint.gameObject != this.gameObject)
+            if (waypoint.gameObject != this.gameObject && waypoint.tag =="Waypoint")
             {
                 m_points.Add(waypoint.transform.position);
             }
