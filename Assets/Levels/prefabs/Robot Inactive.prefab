@@ -38,7 +38,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409060}
-  - 54: {fileID: 5457946}
+  - 143: {fileID: 14365790}
+  - 64: {fileID: 6414428}
+  - 114: {fileID: 11477462}
   m_Layer: 0
   m_Name: Robot Inactive
   m_TagString: Untagged
@@ -83,7 +85,7 @@ Transform:
   m_GameObject: {fileID: 174630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.19660187, y: .321113586, z: 6.01977539}
-  m_LocalScale: {x: .400000006, y: .400000006, z: .400000006}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 401972}
   - {fileID: 439566}
@@ -145,21 +147,51 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187406}
   m_Mesh: {fileID: 4300000, guid: 75100207b96e17443a13d564633fea50, type: 3}
---- !u!54 &5457946
-Rigidbody:
+--- !u!64 &6414428
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174630}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 0}
+--- !u!114 &11477462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9035fd97e2a760b4dabd797b2f166ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_followDistance: 0
+  m_minSpeed: 50
+  m_maxSpeed: 80
+  m_points: []
+  m_IsFollowing: 0
+--- !u!143 &14365790
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174630}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: .5
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: .00100000005
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
