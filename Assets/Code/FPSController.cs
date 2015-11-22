@@ -121,8 +121,6 @@ public class FPSController : MonoBehaviour {
        // bool crouch = Input.GetButton("Crouch");
         #endregion
 
-        pos.y = height + GetComponent<CharacterController>().transform.position.y;
-        
         return pos;
     }
 

@@ -32,11 +32,11 @@ GameObject:
   - 81: {fileID: 8174754}
   - 114: {fileID: 11457842}
   - 114: {fileID: 11429758}
-  - 114: {fileID: 11463046}
   - 143: {fileID: 14307118}
   - 114: {fileID: 11487568}
   - 114: {fileID: 11471508}
   - 114: {fileID: 11423564}
+  - 114: {fileID: 11408898}
   m_Layer: 0
   m_Name: Character 1
   m_TagString: Player
@@ -160,6 +160,26 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169480}
   m_Enabled: 1
+--- !u!114 &11408898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8b07ecf7b62f84f82710b2a5396b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  sprintSpeed: 15
+  clampInDegrees: {x: 360, y: 180}
+  lockCursor: 0
+  sensitivity: {x: 2, y: 2}
+  smoothing: {x: 3, y: 3}
+  targetDirection: {x: 0, y: 0}
+  targetCharacterDirection: {x: 0, y: 0}
+  gamepadConnected: 0
 --- !u!114 &11423564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,26 +241,6 @@ MonoBehaviour:
     AllowFlipping: 0
     YuvColorBleeding: 1
     YuvOffset: .5
---- !u!114 &11463046
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8b07ecf7b62f84f82710b2a5396b29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 100
-  sprintSpeed: 600
-  clampInDegrees: {x: 360, y: 120}
-  lockCursor: 1
-  sensitivity: {x: 2, y: 2}
-  smoothing: {x: 3, y: 3}
-  targetDirection: {x: 0, y: 0}
-  targetCharacterDirection: {x: 0, y: 0}
-  gamepadConnected: 0
 --- !u!114 &11471508
 MonoBehaviour:
   m_ObjectHideFlags: 1

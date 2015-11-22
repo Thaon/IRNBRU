@@ -4,10 +4,11 @@ using System.Collections;
 public class LoadNextRoom : MonoBehaviour {
 
     public string name;
+      public GameObject m_flowChart;
+     
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -19,7 +20,8 @@ public class LoadNextRoom : MonoBehaviour {
     {
         if (target.gameObject.tag == "Player")
         {
-            Application.LoadLevel(name);
+            m_flowChart.SetActive(true);
+            //Application.LoadLevel(name);
         }
            
     }
