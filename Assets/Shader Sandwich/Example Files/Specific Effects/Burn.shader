@@ -7,6 +7,7 @@ Properties {
 	_Cutoff ("Burn Amount", Range(-0.500000000,1.200000000)) = 0.194714500
 	_SSSGlow ("Glow", Range(1.000000000,20.000000000)) = 4.562500000
 	_SSSGlow_Width ("Glow Width", Range(-1.000000000,0.000000000)) = -0.526250000
+	_SSSTexture_aMain_Color ("Texture - Main Color", Color) = (0.627451,0.8,0.8823529,1)
 }
 
 SubShader {
@@ -24,6 +25,7 @@ SubShader {
 	float _Cutoff;
 	float _SSSGlow;
 	float _SSSGlow_Width;
+	float4 _SSSTexture_aMain_Color;
  //Set up Unity Surface Shader Settings.
 	#pragma surface frag_surf CLPBR_Standard addshadow  fullforwardshadows
 //The Shader Target defines the maximum capabilites of the shader (Number of math operators, texture reads, etc.)
@@ -328,9 +330,16 @@ void frag_surf (Input IN, inout CSurfaceOutput o) {
 
 	clip(o.Alpha-_Cutoff);
 	//Generate layers for the Diffuse channel.
+		//Generate Layer: Texture 2
+			//Sample parts of the layer:
+				half4 Texture_2Diffuse_Sample1 = tex2D(_MainTex,(((uv_MainTex.xy))));
+
+			//Set the channel to the new color
+				o.Albedo = Texture_2Diffuse_Sample1.rgb;
+
 		//Generate Layer: Texture
 			//Sample parts of the layer:
-				half4 TextureDiffuse_Sample1 = tex2D(_MainTex,(((uv_MainTex.xy))));
+				half4 TextureDiffuse_Sample1 = _SSSTexture_aMain_Color;
 
 			//Set the channel to the new color
 				o.Albedo = TextureDiffuse_Sample1.rgb;
@@ -465,6 +474,21 @@ SpecialType #! 0 #^ CC0 #?SpecialType
 InEditor #! 1 #^ CC0 #?InEditor
 NormalMap #! 0 #^ CC0 #?NormalMap
 EndShaderInput
+BeginShaderInput
+Type #! 1 #^ CC0 #?Type
+VisName #! Texture - Main Color #^ CC0 #?VisName
+ImageDefault #! 0 #^ CC0 #?ImageDefault
+Image #!  #^ CC0 #?Image
+Cube #!  #^ CC0 #?Cube
+Color #! 0.627451,0.8,0.8823529,1 #^ CC0 #?Color
+Number #! 0 #^ CC0 #?Number
+Range0 #! 0 #^ CC0 #?Range0
+Range1 #! 1 #^ CC0 #?Range1
+MainType #! 0 #^ CC0 #?MainType
+SpecialType #! 0 #^ CC0 #?SpecialType
+InEditor #! 1 #^ CC0 #?InEditor
+NormalMap #! 0 #^ CC0 #?NormalMap
+EndShaderInput
 ShaderName #! Shader Sandwich/Specific/Burn #^ CC0 #?ShaderName
 Hard Mode #! True #^ CC0 #?Hard Mode
 Tech Lod #! 200 #^ CC0 #?Tech Lod
@@ -536,7 +560,7 @@ Layer Name #! Mask0 #^ CC0 #?Layer Name
 Layer Type #! 3 #^ CC0 #?Layer Type
 Main Color #! 1,1,1,1 #^ CC0 #?Main Color
 Second Color #! 0,0,0,1 #^ CC0 #?Second Color
-Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d    #^ CC0 #^ 1 #?Main Texture
+Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d      #^ CC0 #^ 1 #?Main Texture
 Cubemap #!  #^ CC0 #?Cubemap
 Noise Type #! 0 #^ CC0 #?Noise Type
 Noise Dimensions #! 0 #^ CC0 #?Noise Dimensions
@@ -571,7 +595,7 @@ Layer Name #! Mask0 Copy #^ CC0 #?Layer Name
 Layer Type #! 3 #^ CC0 #?Layer Type
 Main Color #! 1,1,1,1 #^ CC0 #?Main Color
 Second Color #! 0,0,0,1 #^ CC0 #?Second Color
-Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d    #^ CC0 #^ 1 #?Main Texture
+Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d      #^ CC0 #^ 1 #?Main Texture
 Cubemap #!  #^ CC0 #?Cubemap
 Noise Type #! 0 #^ CC0 #?Noise Type
 Noise Dimensions #! 0 #^ CC0 #?Noise Dimensions
@@ -626,17 +650,24 @@ EndShaderEffect
 EndShaderLayer
 EndShaderLayerList
 BeginShaderLayerList
+LayerListUniqueName #! Mask2 #^ CC0 #?LayerListUniqueName
+LayerListName #! Ambient #^ CC0 #?LayerListName
+Is Mask #! True #^ CC0 #?Is Mask
+Is Lighting #! True #^ CC0 #?Is Lighting
+EndTag #! rgb #^ CC0 #?EndTag
+EndShaderLayerList
+BeginShaderLayerList
 LayerListUniqueName #! Diffuse #^ CC0 #?LayerListUniqueName
 LayerListName #! Diffuse #^ CC0 #?LayerListName
 Is Mask #! False #^ CC0 #?Is Mask
 Is Lighting #! False #^ CC0 #?Is Lighting
 EndTag #! rgb #^ CC0 #?EndTag
 BeginShaderLayer
-Layer Name #! Texture #^ CC0 #?Layer Name
+Layer Name #! Texture 2 #^ CC0 #?Layer Name
 Layer Type #! 3 #^ CC0 #?Layer Type
 Main Color #! 0.8,0.8,0.8,1 #^ CC0 #?Main Color
 Second Color #! 0,0,0,1 #^ CC0 #?Second Color
-Main Texture #! df74a0cbfe3033e48af5c068e2386265  #^ CC0 #^ 0 #?Main Texture
+Main Texture #! df74a0cbfe3033e48af5c068e2386265 #^ CC0 #^ 0 #?Main Texture
 Cubemap #!  #^ CC0 #?Cubemap
 Noise Type #! 0 #^ CC0 #?Noise Type
 Noise Dimensions #! 0 #^ CC0 #?Noise Dimensions
@@ -659,6 +690,34 @@ Mix Type #! 0 #^ CC0 #?Mix Type
 Stencil #! -1 #^ CC0 #?Stencil
 Vertex Mask #! 1 #^ CC0 #?Vertex Mask
 EndShaderLayer
+BeginShaderLayer
+Layer Name #! Texture #^ CC0 #?Layer Name
+Layer Type #! 0 #^ CC0 #?Layer Type
+Main Color #! 0.627451,0.8,0.8823529,1 #^ CC0 #^ 6 #?Main Color
+Second Color #! 0,0,0,1 #^ CC0 #?Second Color
+Main Texture #!  #^ CC0 #?Main Texture
+Cubemap #!  #^ CC0 #?Cubemap
+Noise Type #! 0 #^ CC0 #?Noise Type
+Noise Dimensions #! 0 #^ CC0 #?Noise Dimensions
+Noise A #! 0 #^ CC0 #?Noise A
+Noise B #! 1 #^ CC0 #?Noise B
+Noise C #! False #^ CC0 #?Noise C
+Light Data #! 0 #^ CC0 #?Light Data
+Special Type #! 0 #^ CC0 #?Special Type
+Linearize Depth #! False #^ CC0 #?Linearize Depth
+UV Map #! 0 #^ CC0 #?UV Map
+Map Local #! False #^ CC0 #?Map Local
+Use Alpha #! False #^ CC0 #?Use Alpha
+Mix Amount #! 1 #^ CC0 #?Mix Amount
+Use Fadeout #! False #^ CC0 #?Use Fadeout
+Fadeout Limit Min #! 0 #^ CC0 #?Fadeout Limit Min
+Fadeout Limit Max #! 10 #^ CC0 #?Fadeout Limit Max
+Fadeout Start #! 3 #^ CC0 #?Fadeout Start
+Fadeout End #! 5 #^ CC0 #?Fadeout End
+Mix Type #! 0 #^ CC0 #?Mix Type
+Stencil #! -1 #^ CC0 #?Stencil
+Vertex Mask #! 2 #^ CC0 #?Vertex Mask
+EndShaderLayer
 EndShaderLayerList
 BeginShaderLayerList
 LayerListUniqueName #! ShellDiffuse #^ CC0 #?LayerListUniqueName
@@ -671,7 +730,7 @@ Layer Name #! Texture Copy #^ CC0 #?Layer Name
 Layer Type #! 3 #^ CC0 #?Layer Type
 Main Color #! 0.8,0.8,0.8,1 #^ CC0 #?Main Color
 Second Color #! 0,0,0,1 #^ CC0 #?Second Color
-Main Texture #! 46e87a5d3e5194d4bbb1be104ac31eda       #^ CC0 #^ 0 #?Main Texture
+Main Texture #! 46e87a5d3e5194d4bbb1be104ac31eda         #^ CC0 #^ 0 #?Main Texture
 Cubemap #!  #^ CC0 #?Cubemap
 Noise Type #! 0 #^ CC0 #?Noise Type
 Noise Dimensions #! 0 #^ CC0 #?Noise Dimensions
@@ -706,7 +765,7 @@ Layer Name #! Alpha #^ CC0 #?Layer Name
 Layer Type #! 3 #^ CC0 #?Layer Type
 Main Color #! 1,1,1,1 #^ CC0 #?Main Color
 Second Color #! 0,0,0,1 #^ CC0 #?Second Color
-Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d    #^ CC0 #^ 1 #?Main Texture
+Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d      #^ CC0 #^ 1 #?Main Texture
 Cubemap #!  #^ CC0 #?Cubemap
 Noise Type #! 0 #^ CC0 #?Noise Type
 Noise Dimensions #! 0 #^ CC0 #?Noise Dimensions
@@ -741,7 +800,7 @@ Layer Name #! Alpha Copy 2 #^ CC0 #?Layer Name
 Layer Type #! 3 #^ CC0 #?Layer Type
 Main Color #! 1,1,1,1 #^ CC0 #?Main Color
 Second Color #! 0,0,0,1 #^ CC0 #?Second Color
-Main Texture #! 7d1eba9f36d4566438c9bd1f26bd00ac      #^ CC0 #^ 1 #?Main Texture
+Main Texture #! 7d1eba9f36d4566438c9bd1f26bd00ac        #^ CC0 #^ 1 #?Main Texture
 Cubemap #!  #^ CC0 #?Cubemap
 Noise Type #! 0 #^ CC0 #?Noise Type
 Noise Dimensions #! 0 #^ CC0 #?Noise Dimensions
@@ -804,7 +863,7 @@ Layer Name #! Alpha Copy #^ CC0 #?Layer Name
 Layer Type #! 3 #^ CC0 #?Layer Type
 Main Color #! 1,1,1,1 #^ CC0 #?Main Color
 Second Color #! 0,0,0,1 #^ CC0 #?Second Color
-Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d  #^ CC0 #^ 1 #?Main Texture
+Main Texture #! 354f7eb7f261f094399e01c57c0c2a0d    #^ CC0 #^ 1 #?Main Texture
 Cubemap #!  #^ CC0 #?Cubemap
 Noise Type #! 0 #^ CC0 #?Noise Type
 Noise Dimensions #! 0 #^ CC0 #?Noise Dimensions
@@ -906,7 +965,7 @@ Layer Name #! Alpha Copy Copy #^ CC0 #?Layer Name
 Layer Type #! 3 #^ CC0 #?Layer Type
 Main Color #! 1,1,1,1 #^ CC0 #?Main Color
 Second Color #! 0,0,0,1 #^ CC0 #?Second Color
-Main Texture #! 7d1eba9f36d4566438c9bd1f26bd00ac      #^ CC0 #^ 1 #?Main Texture
+Main Texture #! 7d1eba9f36d4566438c9bd1f26bd00ac        #^ CC0 #^ 1 #?Main Texture
 Cubemap #!  #^ CC0 #?Cubemap
 Noise Type #! 0 #^ CC0 #?Noise Type
 Noise Dimensions #! 0 #^ CC0 #?Noise Dimensions

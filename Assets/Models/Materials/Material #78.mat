@@ -7,11 +7,12 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 'Material #78'
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: fb57d9f82e3593d488a78fd09c2ce120, type: 3}
+  m_ShaderKeywords: _ALPHATEST_ON
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -19,7 +20,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 3ecd03ed7cd57f74080fa8c57d8a60f2, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -78,6 +79,13 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SSSBurn_Texture
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -122,11 +130,19 @@ Material:
       data:
         first:
           name: _Mode
-        second: 0
+        second: 1
       data:
         first:
           name: _Metallic
-        second: 0
+        second: .386999995
+      data:
+        first:
+          name: _SSSGlow
+        second: 4.5625
+      data:
+        first:
+          name: _SSSGlow_Width
+        second: -.526250005
     m_Colors:
       data:
         first:
@@ -136,3 +152,7 @@ Material:
         first:
           name: _Color
         second: {r: .301960796, g: .301960796, b: .301960796, a: 1}
+      data:
+        first:
+          name: _SSSTexture_aMain_Color
+        second: {r: .242647052, g: .209080055, b: .187337801, a: 1}

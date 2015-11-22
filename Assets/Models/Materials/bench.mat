@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 'Material #76'
+  m_Name: bench
   m_Shader: {fileID: 4800000, guid: fb57d9f82e3593d488a78fd09c2ce120, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -82,7 +82,7 @@ Material:
         first:
           name: _SSSBurn_Texture
         second:
-          m_Texture: {fileID: 2800000, guid: 354f7eb7f261f094399e01c57c0c2a0d, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -97,7 +97,7 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: -.379000008
+        second: .5
       data:
         first:
           name: _Parallax
@@ -137,11 +137,11 @@ Material:
       data:
         first:
           name: _SSSGlow
-        second: 6.21999979
+        second: 4.5625
       data:
         first:
           name: _SSSGlow_Width
-        second: -.470999986
+        second: -.526250005
     m_Colors:
       data:
         first:
@@ -150,8 +150,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .588, g: .588, b: .588, a: 1}
+        second: {r: .0470588282, g: .0470588282, b: .0470588282, a: 1}
       data:
         first:
           name: _SSSTexture_aMain_Color
-        second: {r: .25, g: .0551470518, b: .0551470518, a: 1}
+        second: {r: .375, g: .311405331, b: .245404407, a: 1}
