@@ -877,61 +877,10 @@ MeshRenderer:
 GameObject:
   m_PrefabParentObject: {fileID: 169480, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
   m_PrefabInternal: {fileID: 1671523269}
---- !u!136 &633177616
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 633177615}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: .600000024
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: -1, z: 0}
---- !u!114 &633177617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 633177615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b23961ce11bf3d74fa00403498476367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_rootNode: {fileID: 193410076}
-  m_glitching: 0
---- !u!114 &633177618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 633177615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae3cdee52ceb3de4daa3acce8ff2a0a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paused: 0
 --- !u!4 &633177626 stripped
 Transform:
   m_PrefabParentObject: {fileID: 490230, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
   m_PrefabInternal: {fileID: 1671523269}
---- !u!114 &633177631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 633177615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dbe9ba2054f4a548b391feebfccd88e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_minigame: {fileID: 733559973}
-  m_player: {fileID: 633177615}
 --- !u!1001 &635394092
 Prefab:
   m_ObjectHideFlags: 0
@@ -2761,24 +2710,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11457546, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
+      propertyPath: m_rootNode
+      value: 
+      objectReference: {fileID: 193410076}
     - target: {fileID: 169480, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    - target: {fileID: 11463046, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 169480, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 11463046, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
-      propertyPath: sprintSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 11463046, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
-      propertyPath: lockCursor
+    - target: {fileID: 11416192, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
+      propertyPath: m_rootNode
+      value: 
+      objectReference: {fileID: 193410076}
+    - target: {fileID: 11421182, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
+      propertyPath: m_minigame
+      value: 
+      objectReference: {fileID: 733559973}
+    - target: {fileID: 11457842, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11457842, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
@@ -2789,24 +2738,7 @@ Prefab:
       propertyPath: SettingsTearing.Intensity
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11457842, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 169480, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11457842, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
-      propertyPath: SettingsTearing.AllowFlipping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11457546, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
-      propertyPath: m_rootNode
-      value: 
-      objectReference: {fileID: 193410076}
-    m_RemovedComponents:
-    - {fileID: 11429758, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 46502cc07666f0d47b51043ac17e2cc3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1725540744

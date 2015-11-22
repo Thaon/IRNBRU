@@ -24,6 +24,7 @@ public class Changeable : MonoBehaviour {
     {
         if (!m_isVisible)
         {
+            GetComponent<MeshCollider>().enabled = false;
             if (m_burnAmount < 1.2)
             {
                 m_burnAmount += .01f;
@@ -31,6 +32,7 @@ public class Changeable : MonoBehaviour {
         }
         else
         {
+            GetComponent<MeshCollider>().enabled = true;
             if (m_burnAmount > - 0.5f)
             {
                 m_burnAmount -= .01f;
