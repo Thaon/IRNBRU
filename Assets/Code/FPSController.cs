@@ -128,7 +128,7 @@ public class FPSController : MonoBehaviour {
 
     void MouseLook()
     {
-        if (paused.paused)
+        if (paused.paused || m_dialogueIsPrompted)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
